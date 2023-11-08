@@ -7,6 +7,7 @@
                 <shortby></shortby>
                 <buttonpagination></buttonpagination>
             </div>
+            <listCard></listCard>
         </div>
     </div>
 </template>
@@ -14,6 +15,7 @@
 import searchcontries from "../partials/search/SearchContries.vue"
 import shortby from "../partials/shortby/ShortBy.vue"
 import buttonpagination from "../partials/pagination/Pagination.vue"
+// import CardTemplate from "../partials/cards/CardTemplate.vue"
 export default {
     name: "HomePage",
     setup() {
@@ -22,7 +24,8 @@ export default {
     components: {
         searchcontries,
         shortby,
-        buttonpagination
+        buttonpagination,
+        // CardTemplate
     }
 }
 </script>
