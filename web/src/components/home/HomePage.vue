@@ -5,28 +5,34 @@
             <searchcontries></searchcontries>
             <div class="btn-action">
                 <shortby></shortby>
-                <buttonpagination></buttonpagination>
+                <!-- <buttonpagination></buttonpagination> -->
             </div>
-            <listCard></listCard>
+            <h1 v-if="error" class="error">{{ searchErrorMessage }}</h1>
+            <listCard v-else></listCard>
         </div>
     </div>
 </template>
 <script>
 import searchcontries from "../partials/search/SearchContries.vue"
 import shortby from "../partials/shortby/ShortBy.vue"
-import buttonpagination from "../partials/pagination/Pagination.vue"
+// import buttonpagination from "../partials/pagination/Pagination.vue"
 // import CardTemplate from "../partials/cards/CardTemplate.vue"
+import { countriesStores } from "@/stores/countrieStore";
+import { mapState } from 'pinia';
+
 export default {
-    name: "HomePage",
-    setup() {
-        
-    },
-    components: {
-        searchcontries,
-        shortby,
-        buttonpagination,
-        // CardTemplate
+  data() {
+    return {
+      searchErrorMessage: "This country is not found!"
     }
+  },
+  computed:{
+    ...mapState(countriesStores, ['countries', 'error'])
+  },
+  components:{
+  searchcontries,
+  shortby
+  }
 }
 </script>
 <style scoped>
@@ -39,5 +45,9 @@ export default {
 .btn-action{
     display: flex;
     justify-content: space-between;
+}
+.error{
+    text-align: center;
+    color: red;
 }
 </style>

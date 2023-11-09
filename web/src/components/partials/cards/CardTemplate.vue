@@ -1,7 +1,7 @@
 <template>
   <!-- <pre>{{ country }}</pre> -->
     <v-card
-      class="card-item"
+      class="card-item ml-4" 
       max-width="200"
      
     >
@@ -22,30 +22,21 @@
           <template v-slot:default="{ isActive }">
             <v-card color="card-detail">
               <div class="details">
-                <div>
                   <div>
                     <img :src="country.flags.png" alt="" width="200">
                     <v-card-text>{{ country.name.official }}</v-card-text>
                   </div>
-                  <div>
+                  <div class="ml-4">
                     <p>.Native Country Name: {{ country.name.official }}</p>
-                    <p v-for="name of country.capital" :key="name">.Capital name: {{ capital }}</p>
-                  </div>
-                </div>
-                <div>
-                  <ul>
-                    <li></li>
-                    <p>- Alternative Country Name: 
-                      <ul>
-                        <li v-for="altName of country.altSpellings" :key="altName">
-                        <p>.{{ altName }}</p>
-                        </li>
-                      </ul>
-                    </p>
+                    <p>.Capital: <span v-for="town in country.capital" :key="town">{{ town }}</span></p>
+                    <p>.cca2: {{ country.cca2 }}</p>
+                    <p>.cca3: {{ country.cca3 }}</p>
+                    <h4>.nativeName: <p v-for="n in country.name.nativeName" :key="n">  {{ n.common }}</p></h4>
+                    <h4>.Alternative: <p v-for="alt in country.altSpellings" :key="alt">{{ alt }}</p></h4>
+                    <h4>. Country Calling Codes: {{ country.idd.root }} <p v-for="code in country.idd.suffixes" :key="code">{{ code }}</p></h4>
                     
-                    <li>.Country Calling Codes: {{ country.idd }}</li>
-                  </ul>
-                </div>
+                    
+                  </div>
               </div>
               <v-card-actions>
                 <v-spacer></v-spacer>
